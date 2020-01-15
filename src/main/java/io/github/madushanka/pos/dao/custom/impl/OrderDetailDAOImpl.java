@@ -6,8 +6,9 @@ import io.github.madushanka.pos.dao.custom.OrderDetailDAO;
 import io.github.madushanka.pos.entity.OrderDetail;
 import io.github.madushanka.pos.entity.OrderDetailPK;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository
 public class OrderDetailDAOImpl extends CrudDAOImpl<OrderDetail,OrderDetailPK> implements OrderDetailDAO {
 
     @Override
