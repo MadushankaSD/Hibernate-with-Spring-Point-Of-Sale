@@ -14,13 +14,13 @@ public class OrderDAOImpl extends CrudDAOImpl<Order,Integer> implements OrderDAO
 
     @Override
     public int getLastOrderId() throws Exception {
-        Object object = session.createNativeQuery("SELECT id FROM `order` ORDER BY id DESC LIMIT 1").uniqueResult();
+        Object object = getSession().createNativeQuery("SELECT id FROM `order` ORDER BY id DESC LIMIT 1").uniqueResult();
         return object==null?0: (int) object;
     }
 
     @Override
     public boolean existsByCustomerId(String customerId) throws Exception {
-        NativeQuery nativeQuery = session.createNativeQuery("SELECT * FROM `order` WHERE customerId=?");
+        NativeQuery nativeQuery = getSession().createNativeQuery("SELECT * FROM `order` WHERE customerId=?");
         nativeQuery.setParameter(1, customerId);
 
         return nativeQuery.uniqueResult()!=null;

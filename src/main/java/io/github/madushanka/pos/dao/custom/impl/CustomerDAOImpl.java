@@ -11,6 +11,6 @@ public class CustomerDAOImpl extends CrudDAOImpl<Customer,String> implements Cus
 
     @Override
     public String getLastCustomerId() throws Exception {
-       return (String) session.createNativeQuery("SELECT customerId FROM Customer ORDER BY customerId DESC LIMIT 1").uniqueResult();
+       return (String) getSession().createNativeQuery("SELECT customerId FROM Customer ORDER BY customerId DESC LIMIT 1").uniqueResult();
     }
 }
