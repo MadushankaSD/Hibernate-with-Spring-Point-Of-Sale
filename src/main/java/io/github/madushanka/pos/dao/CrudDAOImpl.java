@@ -2,13 +2,14 @@ package io.github.madushanka.pos.dao;
 
 import io.github.madushanka.pos.entity.SuperEntity;
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 public abstract class CrudDAOImpl<T extends SuperEntity, ID extends Serializable> implements CrudDAO<T,ID> {
-
+    @Autowired
     protected Session session;
     private Class<T> entity;
 
@@ -42,7 +43,7 @@ public abstract class CrudDAOImpl<T extends SuperEntity, ID extends Serializable
     }
 
     @Override
-    public void setSession(Session session) {
+    public void getSession(Session session) {
         this.session=session;
     }
 }

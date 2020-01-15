@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 import org.hibernate.transform.Transformers;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +16,7 @@ import java.util.List;
 @Repository
 public class QueryDAOImpl implements QueryDAO {
 
+    @Autowired
     private Session session;
 
     @Override
@@ -27,7 +29,7 @@ public class QueryDAOImpl implements QueryDAO {
         return list;
 }
     @Override
-    public void setSession(Session session) {
+    public void getSession(Session session) {
         this.session=session;
     }
 }
