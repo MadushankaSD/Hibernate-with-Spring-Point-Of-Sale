@@ -8,7 +8,7 @@ import io.github.madushanka.pos.entity.Order;
 import org.hibernate.query.NativeQuery;
 import org.springframework.stereotype.Component;
 
-@Component
+
 public class OrderDAOImpl extends CrudDAOImpl<Order,Integer> implements OrderDAO {
 
     @Override
