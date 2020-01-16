@@ -45,6 +45,6 @@ public abstract class CrudDAOImpl<T extends SuperEntity, ID extends Serializable
 
     @Override
     public Session getSession() {
-       return sessionFactory.openSession();
+       return sessionFactory.getCurrentSession();
     }
 }

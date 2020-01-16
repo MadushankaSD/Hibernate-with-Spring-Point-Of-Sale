@@ -1,18 +1,22 @@
 package io.github.madushanka.pos.business.custom.impl;
 
 import io.github.madushanka.pos.business.custom.ItemBO;
-import io.github.madushanka.pos.business.exception.AlreadyExistsInOrderException;
+
 import io.github.madushanka.pos.dao.custom.ItemDAO;
 import io.github.madushanka.pos.dao.custom.OrderDetailDAO;
 import io.github.madushanka.pos.dto.ItemDTO;
 import io.github.madushanka.pos.entity.Item;
-import org.hibernate.Session;
+
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Transactional
 @Component
 public class ItemBOImpl implements ItemBO {
 
@@ -39,10 +43,11 @@ public class ItemBOImpl implements ItemBO {
     public void deleteItem(String itemCode) throws Exception {
 
             if (orderDetailDAO.existsByItemCode(itemCode)) {
-                throw new AlreadyExistsInOrderException("Item already exists in an order, hence unable to delete");
+                new Alert(Alert.AlertType.WARNING,"Item already exists in an order, hence unable to delete", ButtonType.OK).show();
             }
-             itemDAO.delete(itemCode);
-
+            else {
+                itemDAO.delete(itemCode);
+            }
     }
 
     @Override

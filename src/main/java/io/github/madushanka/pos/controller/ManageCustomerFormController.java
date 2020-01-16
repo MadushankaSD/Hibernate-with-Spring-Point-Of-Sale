@@ -2,7 +2,6 @@ package io.github.madushanka.pos.controller;
 
 import io.github.madushanka.pos.AppInitializer;
 import io.github.madushanka.pos.business.custom.CustomerBO;
-import io.github.madushanka.pos.business.exception.AlreadyExistsInOrderException;
 import io.github.madushanka.pos.dto.CustomerDTO;
 import io.github.madushanka.pos.util.CustomerTM;
 import javafx.beans.value.ChangeListener;
@@ -31,7 +30,7 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ManageCustomerFormController implements Initializable {
+public class ManageCustomerFormController {
 
     @FXML
     private Button btnSave;
@@ -51,8 +50,8 @@ public class ManageCustomerFormController implements Initializable {
 
     private CustomerBO customerBO = AppInitializer.ctx.getBean(CustomerBO.class);
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+
+    public void initialize() {
 
         tblCustomers.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
         tblCustomers.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -166,11 +165,10 @@ public class ManageCustomerFormController implements Initializable {
             CustomerTM selectedItem = tblCustomers.getSelectionModel().getSelectedItem();
             try {
                 customerBO.deleteCustomer(selectedItem.getId());
-                tblCustomers.getItems().remove(selectedItem);
-            }catch (AlreadyExistsInOrderException e){
-                new Alert(Alert.AlertType.INFORMATION,e.getMessage()).show();
+                tblCustomers.getItems().clear();
+                initialize();
             } catch (Exception e) {
-                new Alert(Alert.AlertType.ERROR,"Something went wrong, please contact DEPPO").show();
+                new Alert(Alert.AlertType.ERROR,"Something went wrong..").show();
                 Logger.getLogger("io.github.madushanka.pos.controller").log(Level.SEVERE, null,e);
             }
         }

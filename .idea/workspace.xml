@@ -3,11 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="a0fa4f72-a798-4101-b2d2-9386c64ee44a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/madushanka/pos/AppInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/madushanka/pos/AppInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/madushanka/pos/HibernateConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/madushanka/pos/HibernateConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/madushanka/pos/business/custom/impl/CustomerBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/madushanka/pos/business/custom/impl/CustomerBOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/madushanka/pos/controller/MainFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/madushanka/pos/controller/MainFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/madushanka/pos/business/custom/impl/ItemBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/madushanka/pos/business/custom/impl/ItemBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/madushanka/pos/business/custom/impl/OrderBOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/madushanka/pos/business/custom/impl/OrderBOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/madushanka/pos/business/exception/AlreadyExistsInOrderException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/madushanka/pos/controller/ManageCustomerFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/madushanka/pos/controller/ManageCustomerFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/madushanka/pos/controller/ManageItemFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/madushanka/pos/controller/ManageItemFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/madushanka/pos/dao/CrudDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/madushanka/pos/dao/CrudDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/madushanka/pos/dao/custom/impl/OrderDetailDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/madushanka/pos/dao/custom/impl/OrderDetailDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/github/madushanka/pos/dao/custom/impl/QueryDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/madushanka/pos/dao/custom/impl/QueryDAOImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,6 +22,50 @@
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="DEP4Hibernate: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="DEP4Hibernate: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="Customer: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="DEP4Hibernate: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="OrderDetail: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+    </expand>
+    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -48,6 +95,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -88,7 +136,12 @@
       <list>
         <serviceView>
           <treeState>
-            <expand />
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
             <select />
           </treeState>
         </serviceView>
@@ -106,7 +159,8 @@
       <option name="presentableId" value="Default" />
       <updated>1579116986368</updated>
       <workItem from="1579116990650" duration="1360000" />
-      <workItem from="1579118401720" duration="6991000" />
+      <workItem from="1579118401720" duration="7522000" />
+      <workItem from="1579156115183" duration="2705000" />
     </task>
     <servers />
   </component>
@@ -117,22 +171,30 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1322" height="374" key="GridCell.Tab.0.bottom" timestamp="1579152188888">
+    <state x="278" y="59" width="800" height="673" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1579157426063">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state width="1322" height="374" key="GridCell.Tab.0.bottom/0.27.1366.741@0.27.1366.741" timestamp="1579152188888" />
-    <state width="1322" height="374" key="GridCell.Tab.0.center" timestamp="1579152188886">
+    <state x="278" y="59" width="800" height="673" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1366.741@0.27.1366.741" timestamp="1579157426063" />
+    <state width="1322" height="373" key="GridCell.Tab.0.bottom" timestamp="1579158936937">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state width="1322" height="374" key="GridCell.Tab.0.center/0.27.1366.741@0.27.1366.741" timestamp="1579152188886" />
-    <state width="1322" height="374" key="GridCell.Tab.0.left" timestamp="1579152188885">
+    <state width="1322" height="373" key="GridCell.Tab.0.bottom/0.27.1366.741@0.27.1366.741" timestamp="1579158936937" />
+    <state width="1322" height="373" key="GridCell.Tab.0.center" timestamp="1579158936937">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state width="1322" height="374" key="GridCell.Tab.0.left/0.27.1366.741@0.27.1366.741" timestamp="1579152188885" />
-    <state width="1322" height="374" key="GridCell.Tab.0.right" timestamp="1579152188887">
+    <state width="1322" height="373" key="GridCell.Tab.0.center/0.27.1366.741@0.27.1366.741" timestamp="1579158936937" />
+    <state width="1322" height="373" key="GridCell.Tab.0.left" timestamp="1579158936937">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state width="1322" height="374" key="GridCell.Tab.0.right/0.27.1366.741@0.27.1366.741" timestamp="1579152188887" />
+    <state width="1322" height="373" key="GridCell.Tab.0.left/0.27.1366.741@0.27.1366.741" timestamp="1579158936937" />
+    <state width="1322" height="373" key="GridCell.Tab.0.right" timestamp="1579158936937">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="1322" height="373" key="GridCell.Tab.0.right/0.27.1366.741@0.27.1366.741" timestamp="1579158936937" />
+    <state width="251" height="478" key="HiddenNamespacesPopup" timestamp="1579157454682">
+      <screen x="0" y="27" width="1366" height="741" />
+    </state>
+    <state width="251" height="478" key="HiddenNamespacesPopup/0.27.1366.741@0.27.1366.741" timestamp="1579157454682" />
     <state x="367" y="225" key="com.intellij.ide.util.TipDialog" timestamp="1579118400960">
       <screen x="0" y="27" width="1366" height="741" />
     </state>

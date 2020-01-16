@@ -3,7 +3,6 @@ package io.github.madushanka.pos.controller;
 import com.jfoenix.controls.JFXTextField;
 import io.github.madushanka.pos.AppInitializer;
 import io.github.madushanka.pos.business.custom.ItemBO;
-import io.github.madushanka.pos.business.exception.AlreadyExistsInOrderException;
 import io.github.madushanka.pos.dto.ItemDTO;
 import io.github.madushanka.pos.util.ItemTM;
 import javafx.beans.value.ChangeListener;
@@ -32,7 +31,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ManageItemFormController implements Initializable {
+public class ManageItemFormController{
     public JFXTextField txtCode;
     public JFXTextField txtDescription;
     public JFXTextField txtQtyOnHand;
@@ -47,8 +46,8 @@ public class ManageItemFormController implements Initializable {
 
     private ItemBO itemBO = AppInitializer.ctx.getBean(ItemBO.class);
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+
+    public void initialize() {
         tblItems.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("code"));
         tblItems.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("description"));
         tblItems.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
@@ -160,11 +159,10 @@ public class ManageItemFormController implements Initializable {
             ItemTM selectedItem = tblItems.getSelectionModel().getSelectedItem();
             try {
                 itemBO.deleteItem(selectedItem.getCode());
-                tblItems.getItems().remove(selectedItem);
-            } catch (AlreadyExistsInOrderException e) {
-                new Alert(Alert.AlertType.INFORMATION, e.getMessage()).show();
+                tblItems.getItems().clear();
+                initialize();
             } catch (Exception e) {
-                new Alert(Alert.AlertType.ERROR, "Something went wrong, please contact DEPPO").show();
+                new Alert(Alert.AlertType.ERROR, "Something went wrong..!").show();
                 Logger.getLogger("io.github.madushanka.pos.controller").log(Level.SEVERE, null, e);
             }
         }

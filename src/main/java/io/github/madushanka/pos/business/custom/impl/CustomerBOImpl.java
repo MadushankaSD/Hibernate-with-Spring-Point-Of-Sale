@@ -1,17 +1,21 @@
 package io.github.madushanka.pos.business.custom.impl;
 
 import io.github.madushanka.pos.business.custom.CustomerBO;
-import io.github.madushanka.pos.business.exception.AlreadyExistsInOrderException;
 import io.github.madushanka.pos.dao.custom.CustomerDAO;
 import io.github.madushanka.pos.dao.custom.OrderDAO;
 import io.github.madushanka.pos.dto.CustomerDTO;
 import io.github.madushanka.pos.entity.Customer;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Transactional
 @Component
 public class CustomerBOImpl implements CustomerBO {
 
@@ -34,9 +38,11 @@ public class CustomerBOImpl implements CustomerBO {
     public void deleteCustomer(String customerId) throws Exception {
 
             if (orderDAO.existsByCustomerId(customerId)) {
-                throw new AlreadyExistsInOrderException("Customer already exists in an order, hence unable to delete");
-            }
+                new Alert(Alert.AlertType.WARNING,"This customer Has Already a Order", ButtonType.OK).show();
+
+            }else {
                 customerDAO.delete(customerId);
+            }
     }
 
     @Override
@@ -72,9 +78,7 @@ public class CustomerBOImpl implements CustomerBO {
 
     @Override
     public List<String> getAllCustomerIDs() throws Exception {
-
             List<Customer> customers = customerDAO.findAll();
-
             List<String> ids = new ArrayList<>();
             for (Customer customer : customers) {
                 ids.add(customer.getCustomerId());
