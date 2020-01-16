@@ -6,7 +6,6 @@ import io.github.madushanka.pos.dao.custom.CustomerDAO;
 import io.github.madushanka.pos.dao.custom.OrderDAO;
 import io.github.madushanka.pos.dto.CustomerDTO;
 import io.github.madushanka.pos.entity.Customer;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

@@ -28,7 +28,8 @@ public class AppInitializer extends Application {
             ctx= new AnnotationConfigApplicationContext();
             ctx.register(AppConfig.class);
             ctx.refresh();
-            // Let's setup the root logger
+
+
         Logger rootLogger = Logger.getLogger("");
         FileHandler fileHandler = new FileHandler("error.log", true);
         fileHandler.setFormatter(new SimpleFormatter());

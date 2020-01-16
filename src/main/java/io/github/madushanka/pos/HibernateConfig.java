@@ -1,6 +1,8 @@
 package io.github.madushanka.pos;
 
 import lk.ijse.dep.crypto.DEPCrypt;
+import net.sf.jasperreports.engine.util.JsonUtil;
+import org.eclipse.jdt.internal.compiler.env.ISourceType;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -17,7 +19,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@PropertySource("file:${user.dir}/resources/application.properties")
+@PropertySource("classpath:application.properties")
 @EnableTransactionManagement
 public class HibernateConfig {
 
@@ -55,4 +57,6 @@ public class HibernateConfig {
     public PlatformTransactionManager transactionManager(SessionFactory sessionFactory){
         return new HibernateTransactionManager(sessionFactory);
     }
+
+
 }

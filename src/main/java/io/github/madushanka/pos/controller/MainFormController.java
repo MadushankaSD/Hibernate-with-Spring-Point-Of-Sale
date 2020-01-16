@@ -1,7 +1,8 @@
 package io.github.madushanka.pos.controller;
 
 import com.jfoenix.controls.JFXProgressBar;
-import io.github.madushanka.pos.db.HibernateUtill;
+import io.github.madushanka.pos.AppInitializer;
+import io.github.madushanka.pos.HibernateConfig;
 import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
@@ -23,6 +24,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lk.ijse.dep.crypto.DEPCrypt;
+import org.springframework.core.env.Environment;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -47,6 +50,24 @@ public class MainFormController implements Initializable {
     private Label lblMenu;
     @FXML
     private Label lblDescription;
+
+    private Environment env=AppInitializer.ctx.getBean(Environment.class);
+
+
+    public String getPassword(){
+        return DEPCrypt.decode(env.getRequiredProperty("hibernate.connection.password"), "123");
+    }
+    private String getUser(){
+       return DEPCrypt.decode(env.getRequiredProperty("hibernate.connection.username"),"123");
+    }
+    private String getIp(){return env.getRequiredProperty("pos.ip");}
+    private String getPort(){
+        return env.getRequiredProperty("pos.port");
+    }
+    private String getDB(){
+        return env.getRequiredProperty("pos.db");
+    }
+
 
     public void initialize(URL url, ResourceBundle rb) {
         FadeTransition fadeIn = new FadeTransition(Duration.millis(2000), root);
@@ -159,12 +180,14 @@ public class MainFormController implements Initializable {
                 .add(new FileChooser.ExtensionFilter("SQL File", "*.sql"));
         File file = fileChooser.showOpenDialog(this.root.getScene().getWindow());
 
+
+
         if (file != null) {
             String[] commands;
-            if (HibernateUtill.getPassword().length() > 0) {
-                commands = new String[]{"mysql", "-h", HibernateUtill.getIp(), "--port", HibernateUtill.getPort(), "-u", HibernateUtill.getUser(), "-p" + HibernateUtill.getPassword(), HibernateUtill.getDB(), "-e", "source " + file.getAbsolutePath()};
+            if (getPassword().length() > 0) {
+                commands = new String[]{"mysql", "-h", getIp(), "--port", getPort(), "-u", getUser(), "-p" + getPassword(), getDB(), "-e", "source " + file.getAbsolutePath()};
             } else {
-                commands = new String[]{"mysql", "-h", HibernateUtill.getIp(), "--port", HibernateUtill.getPort(), "-u", HibernateUtill.getUser(), HibernateUtill.getDB(), "-e", "source " + file.getAbsolutePath()};
+                commands = new String[]{"mysql", "-h", getIp(), "--port", getPort(), "-u", getUser(), getDB(), "-e", "source " + file.getAbsolutePath()};
             }
             this.root.getScene().setCursor(Cursor.WAIT);
             pgb.setVisible(true);
@@ -209,8 +232,8 @@ public class MainFormController implements Initializable {
         if (file != null) {
             Process process = null;
             try {
-                process = Runtime.getRuntime().exec("mysqldump -h" + HibernateUtill.getIp() + " -u" + HibernateUtill.getUser() + " -p"
-                        + HibernateUtill.getPassword() + " " + HibernateUtill.getDB() + " --result-file "
+                process = Runtime.getRuntime().exec("mysqldump -h" + getIp() + " -u" + getUser() + " -p"
+                        + getPassword() + " " + getDB() + " --result-file "
                         + file.getAbsolutePath() + (file.getAbsolutePath().endsWith(".sql") ? "" : ".sql"));
                 int exitCode = process.waitFor();
                 pgb.setVisible(true);

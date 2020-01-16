@@ -31,6 +31,6 @@ public class QueryDAOImpl implements QueryDAO {
 }
     @Override
     public Session getSession() {
-        return sessionFactory.getCurrentSession();
+        return sessionFactory.openSession();
     }
 }
